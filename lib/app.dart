@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:magento_flutter/screens/home.dart';
 import 'blocs/provider.dart';
 
 class App extends StatelessWidget {
@@ -17,10 +18,9 @@ class App extends StatelessWidget {
       return MaterialPageRoute(
         builder: (context) {
           final bloc = Provider.of(context);
+          bloc.test();
 
-          return Center(
-            child: Text('Home Screen')
-          );
+          return Home();
         },
       );
     }
