@@ -18,7 +18,7 @@ class App extends StatelessWidget {
       return MaterialPageRoute(
         builder: (context) {
           final bloc = Provider.of(context);
-          bloc.test();
+          bloc.fetchHomeConfig();
 
           return Home();
         },

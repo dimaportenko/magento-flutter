@@ -32,6 +32,12 @@ class MagentoRepository {
 
     return json.jsonDecode(homeConfig);
   }
+
+  clearCache() async {
+    for(var cache in caches) {
+      await cache.clear();
+    }
+  }
 }
 
 abstract class Source {
