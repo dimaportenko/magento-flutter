@@ -56,6 +56,10 @@ class MagentoDbProvider implements Source, Cache {
     return await fetchConfig('home');
   }
 
+  Future<String> fetchStoreConfig() async {
+    return await fetchConfig('store');
+  }
+
   Future<int> addConfig(String name, String content) {
     return db.insert(
       _configsTableName,

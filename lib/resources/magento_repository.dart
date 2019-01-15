@@ -33,6 +33,26 @@ class MagentoRepository {
     return json.jsonDecode(homeConfig);
   }
 
+  Future<List<dynamic>> fetchStoreConfig() async {
+    String config;
+    var source;
+
+    for(source in sources) {
+      config = await source.fetchStoreConfig();
+      if (config != null) {
+        break;
+      }
+    }
+
+    for(var cache in caches) {
+      if (cache != source) {
+        cache.addConfig('store', config);
+      }
+    }
+
+    return json.jsonDecode(config);
+  }
+
   clearCache() async {
     for(var cache in caches) {
       await cache.clear();
@@ -41,6 +61,7 @@ class MagentoRepository {
 }
 
 abstract class Source {
+  Future<String> fetchStoreConfig();
   Future<String> fetchHomeConfig();
 }
 

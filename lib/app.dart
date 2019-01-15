@@ -17,9 +17,6 @@ class App extends StatelessWidget {
     if (settings.name == '/') {
       return MaterialPageRoute(
         builder: (context) {
-          final bloc = Provider.of(context);
-          bloc.fetchHomeConfig();
-
           return Home();
         },
       );

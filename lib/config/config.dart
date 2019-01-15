@@ -9,6 +9,7 @@ class Config {
   String apiPath;
   Map<String, String> headers = Map<String, String>();
   Future initialized;
+  Map<String, dynamic> storeConfig;
 
   Config() {
     initialized = init();
@@ -28,6 +29,19 @@ class Config {
 
   Future<String> loadAsset() async {
     return await rootBundle.loadString('assets/config.json');
+  }
+
+  setStoreConfig(Map<String, dynamic> storeConfiguration) {
+    print('setStoreConfig');
+    storeConfig = storeConfiguration;
+  }
+
+  String getMediaUrl() {
+    return '${storeConfig['base_media_url']}';
+  }
+
+  String getProductMediaUrl() {
+    return '${storeConfig['base_media_url']}catalog/product';
   }
 }
 
