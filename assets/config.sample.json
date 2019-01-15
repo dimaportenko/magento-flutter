@@ -1,0 +1,5 @@
+{
+  "base_url": "Magento base url",
+  "access_token": "admin access token",
+  "home_cms_block_id": "csm block id with home screen configuration from Magento admin"
+}

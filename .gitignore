@@ -71,4 +71,4 @@ build/
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
 
 # config
-lib/config/config.dart
+assets/config.json
