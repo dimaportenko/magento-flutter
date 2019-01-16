@@ -12,9 +12,14 @@ class Bloc {
 
   Bloc() {
     fetchStoreConfig();
+
     _storeConfig.stream.listen((data) {
       config.setStoreConfig(data[0]);
       fetchHomeConfig();
+    });
+
+    _homeConfig.stream.listen((data) {
+      fetchFeaturedCategories(data);
     });
   }
 
@@ -26,6 +31,15 @@ class Bloc {
   fetchStoreConfig() async {
     final config = await _repository.fetchStoreConfig();
     _storeConfig.sink.add(config);
+  }
+
+  fetchFeaturedCategories(data) async {
+    print('fetchFeaturedCategories');
+    print(data);
+
+    data['featuredCategories'].forEach((key, value) {
+      _repository.getProducts(int.parse(key));
+    });
   }
 
   clearCache() {

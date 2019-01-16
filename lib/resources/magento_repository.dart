@@ -53,6 +53,10 @@ class MagentoRepository {
     return json.jsonDecode(config);
   }
 
+  getProducts(categoryId) {
+    MagentoApiProvider().fetchProductsForCategory(categoryId: categoryId);
+  }
+
   clearCache() async {
     for(var cache in caches) {
       await cache.clear();
