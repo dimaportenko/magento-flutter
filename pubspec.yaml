@@ -35,6 +35,8 @@ dependencies:
   # swiper
   flutter_swiper: ^1.1.4
 
+  cached_network_image: ^0.5.1
+
 
 dev_dependencies:
   flutter_test:

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert' as json;
 import 'magento_api_provider.dart';
 import 'magento_db_provider.dart';
+import '../models/product_model.dart';
 
 class MagentoRepository {
   List<Source> sources = <Source>[
@@ -53,8 +54,21 @@ class MagentoRepository {
     return json.jsonDecode(config);
   }
 
-  getProducts(categoryId) {
-    MagentoApiProvider().fetchProductsForCategory(categoryId: categoryId);
+  Future<List<ProductModel>> getProducts(categoryId) async {
+    final result = await MagentoApiProvider().fetchProductsForCategory(categoryId: categoryId);
+    final decoded = json.jsonDecode(result);
+
+    var products;
+    if (decoded != null && decoded['items'] != null) {
+       products = decoded['items'].map((item) {
+        return ProductModel.fromJson(item);
+      }).toList();
+    }
+
+    print('products');
+    print(products);
+
+    return List<ProductModel>.from(products);
   }
 
   clearCache() async {
