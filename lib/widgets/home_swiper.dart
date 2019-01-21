@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import '../config/config.dart';
 
 class HomeSwiper extends StatelessWidget {
@@ -22,15 +23,13 @@ class HomeSwiper extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return Stack(
             children: <Widget>[
-              Center(
-                child: CircularProgressIndicator(),
+              CachedNetworkImage(
+                imageUrl: '${config.getMediaUrl()}${images.elementAt(index)}',
+                placeholder: Center(child: CircularProgressIndicator()),
+                errorWidget: Icon(Icons.error),
+                height: 200,
+                fit: BoxFit.fitHeight,
               ),
-              Container(
-                  height: 200,
-                  child: Image.network(
-                    '${config.getMediaUrl()}${images.elementAt(index)}',
-                    fit: BoxFit.fitHeight,
-                  )),
               Center(
                 child: Container(
                   padding: EdgeInsets.only(left: 30, right: 30),

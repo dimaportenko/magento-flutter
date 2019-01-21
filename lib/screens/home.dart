@@ -38,11 +38,6 @@ class Home extends StatelessWidget {
           );
         }
 
-//        List<Widget> children = [];
-//        productsSnapshot.data.forEach((product) {
-//          children.add();
-//        });
-
         return Container(
           height: 185,
           child: ListView.builder(
@@ -60,24 +55,25 @@ class Home extends StatelessWidget {
                   children: <Widget>[
                     CachedNetworkImage(
                       imageUrl: '${config.getProductMediaUrl()}/${product.image}',
-                      placeholder: CircularProgressIndicator(),
+                      placeholder: Center(child: CircularProgressIndicator()),
                       errorWidget: Icon(Icons.error),
                       height: 130,
                       width: 115,
+                      fit: BoxFit.fitHeight,
                     ),
-//                Image.network(
-//                  '${config.getProductMediaUrl()}/${product.image}',
-//                  height: 130,
-//                  width: 115,
-//                ),
                     Container(
                         height: 35,
                         margin: EdgeInsets.only(top: 4, bottom: 2),
-                        child: Text(
-                          product.name,
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 2,
-                          textAlign: TextAlign.center,
+                        child: Center(
+                          child: Text(
+                            product.name,
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 2,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 12,
+                            ),
+                          ),
                         )),
                   ],
                 ),
@@ -85,15 +81,6 @@ class Home extends StatelessWidget {
             },
           ),
         );
-
-
-//        return Container(
-//          height: 185,
-//          child: ListView(
-//            scrollDirection: Axis.horizontal,
-//            children: children,
-//          ),
-//        );
       },
     );
   }

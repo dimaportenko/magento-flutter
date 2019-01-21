@@ -30,7 +30,7 @@ class MagentoApiProvider implements Source {
     return response.body.toString();
   }
 
-  Future<String> fetchProductsForCategory({int categoryId, int pageSize = 2, int offset = 0}) async {
+  Future<String> fetchProductsForCategory({int categoryId, int pageSize = 10, int offset = 0}) async {
     final currentPage = (offset / pageSize + 1).toInt();
     final params = <String, dynamic>{
       'searchCriteria[filterGroups][0][filters][0][field]': 'category_id',
