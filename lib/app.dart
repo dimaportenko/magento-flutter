@@ -17,7 +17,10 @@ class App extends StatelessWidget {
     if (settings.name == '/') {
       return MaterialPageRoute(
         builder: (context) {
-          return Home();
+          return MediaQuery(
+            child: Home(),
+            data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+          );
         },
       );
     }
