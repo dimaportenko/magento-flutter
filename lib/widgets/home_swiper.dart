@@ -25,8 +25,8 @@ class HomeSwiper extends StatelessWidget {
             children: <Widget>[
               CachedNetworkImage(
                 imageUrl: '${config.getMediaUrl()}${images.elementAt(index)}',
-                placeholder: Center(child: CircularProgressIndicator()),
-                errorWidget: Icon(Icons.error),
+                placeholder: (context, url) => Center(child: CircularProgressIndicator()),
+                errorWidget: (context, url, error) => Icon(Icons.error),
                 height: 200,
                 fit: BoxFit.fitHeight,
               ),

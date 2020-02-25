@@ -55,8 +55,8 @@ class Home extends StatelessWidget {
                   children: <Widget>[
                     CachedNetworkImage(
                       imageUrl: '${config.getProductMediaUrl()}/${product.image}',
-                      placeholder: Center(child: CircularProgressIndicator()),
-                      errorWidget: Icon(Icons.error),
+                      placeholder: (context, url) => Center(child: CircularProgressIndicator()),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
                       height: 130,
                       width: 115,
                       fit: BoxFit.fitHeight,
